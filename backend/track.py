@@ -70,6 +70,59 @@ def detect_e():
         return False
     else:
         return True
+def detect_f():
+    if distance(xvals,yvals,'PINKY_TIP') < 260:
+            return False
+    elif distance(xvals,yvals,'RING_TIP') < 260:
+        return False
+    elif distance(xvals,yvals,'MIDDLE_TIP') < 260:
+        return False
+    elif distance(xvals,yvals,'INDEX_TIP') > 150:
+        return False
+    elif distance(xvals,yvals,'THUMB_TIP') > 150:
+        return False
+    else:
+        return False
+def detect_g():
+    if distance(xvals,yvals,'INDEX_TIP') < 150:
+        return False
+    elif distance(xvals,yvals,'THUMB_TIP') < 100:
+        return False
+    elif distance(xvals,yvals,'PINKY_TIP') > 80:
+        return False
+    elif distance(xvals,yvals,'RING_TIP') > 90:
+        return False
+    elif distance(xvals,yvals,'MIDDLE_TIP') > 95:
+        return False
+    else:
+        return True
+def detect_h():
+    if distance(xvals,yvals,'INDEX_TIP') < 320:
+        return False
+    elif distance(xvals,yvals,'MIDDLE_TIP') < 320:
+        return False
+    elif distance(xvals,yvals,'RING_TIP') > 180:
+        return False
+    elif distance(xvals,yvals,'MIDDLE_TIP') > 180:
+        return False
+    elif distance(xvals,yvals,'THUMB_TIP') > 170:
+        return False
+    else:
+        return True
+def detect_i():
+    #220 70
+    if distance(xvals,yvals,'PINKY_TIP') < 210:
+        return False
+    elif distance(xvals,yvals,'RING_TIP') > 75:
+        return False
+    elif distance(xvals,yvals,'INDEX_TIP') > 80:
+        return False
+    elif distance(xvals,yvals,'MIDDLE_TIP') > 90:
+        return False
+    elif distance(xvals,yvals,'THUMB_TIP') > 70:
+        return False
+    else:
+        return True
 
 global points
 points = ["WRIST", "THUMB_BASE", "THUMB_BOTTOM", "THUMB_MIDDLE", "THUMB_TIP", "INDEX_BASE", "INDEX_BOTTOM", "INDEX_MIDDLE", "INDEX_TIP","MIDDLE_BASE", "MIDDLE_BOTTOM", "MIDDLE_MIDDLE", "MIDDLE_TIP", "RING_BASE", "RING_BOTTOM", "RING_MIDDLE", "RING_TIP", "PINKY_BASE", "PINKY_BOTTOM", "PINKY_MIDDLE", "PINKY_TIP"]
@@ -118,8 +171,8 @@ while 1:
 
     cv2.putText(img,str(int(fps)), (10,70), cv2.FONT_HERSHEY_PLAIN, 3, (255,0,255), 3)
     try:
-        #print(f"d for pinky {distance(xvals,yvals,'PINKY_TIP')}")
-        #print(f"d for eing {distance(xvals,yvals,'RING_TIP')}")
+        print(f"d for pinky {distance(xvals,yvals,'PINKY_TIP')}")
+        print(f"d for ring {distance(xvals,yvals,'RING_TIP')}")
         #print(f"d for middle {distance(xvals,yvals,'MIDDLE_TIP')}")
         #print(f"d for index {distance(xvals,yvals,'INDEX_TIP')}")
         #print(f"d for thumb {distance(xvals,yvals,'THUMB_TIP')}")
@@ -131,6 +184,16 @@ while 1:
             print("User is signing C")
         if detect_d():
             print("User is signing D")
+        if detect_e():
+            print("User is signing E")
+        if detect_f():
+            print("USer is signing F")
+        if detect_g():
+            print("User is signing G")
+        if detect_h():
+            print("User is signing H")
+        if detect_i():
+            print("User is signing I")
     except Exception as e:
         print(e)
     cv2.imshow("Image", img)
