@@ -5,6 +5,21 @@ import os
 import math
 
 cap = cv2.VideoCapture(0)
+def detect_a():
+    #70 on pinky when doing A
+    #Thumb must be more than 120
+    if distance(xvals,yvals,"PINKY_TIP") > 88:
+        return False
+    elif distance(xvals,yvals,"RING_TIP") > 98:
+        return False
+    elif distance(xvals,yvals,"MIDDLE_TIP") > 98:
+        return False
+    elif distance(xvals,yvals,"INDEX_TIP") > 98:
+        return False
+    elif distance(xvals,yvals,"THUMB_TIP") < 120:
+        return False
+    else:
+        return True
 def detect_b():
     #160 100
     #40 210
@@ -57,7 +72,7 @@ while True:
                 #print(points[id], cx, cy)
                 xvals.append(cx)
                 yvals.append(cy)
-                if id ==4:
+                if id ==20:
                     cv2.circle(img, (cx,cy), 7, (255,0,255), cv2.FILLED)
             mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
 
@@ -68,10 +83,16 @@ while True:
 
     cv2.putText(img,str(int(fps)), (10,70), cv2.FONT_HERSHEY_PLAIN, 3, (255,0,255), 3)
     try:
-        print(f"The distance between the pinky and the wrist is {distance(xvals,yvals,'THUMB_TIP')}")
-        if detect_b():
-            print("User is signing B!")
-    except:
-        pass
+        #print(f"d for pinky {distance(xvals,yvals,'PINKY_TIP')}")
+        #print(f"d for eing {distance(xvals,yvals,'RING_TIP')}")
+        #print(f"d for middle {distance(xvals,yvals,'MIDDLE_TIP')}")
+        #print(f"d for index {distance(xvals,yvals,'INDEX_TIP')}")
+        #print(f"d for thumb {distance(xvals,yvals,'THUMB_TIP')}")
+        if detect_a():
+            print("User is signing A!")
+        elif detect_b():
+            print("User is signing B")
+    except Exception as e:
+        print(e)
     cv2.imshow("Image", img)
     cv2.waitKey(1)
