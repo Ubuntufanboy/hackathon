@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+  opacity: 1;
+  height: 100%;
+  margin: 0;
+  background-color: white;
+}
+
+.navbar {
+  margin: 0;
+  top: 0;
+  opacity: 0.5;
+  background-color: black;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+}
+
+.frontpagerow{
+  
+  background-color: black;
+  padding: 30px;
+}
+
+.fronth1{
+  font-size: 100px;
+  background: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.firstinfocol{
+  font-family: "Roboto";
+  font-family: 40px;
+  padding: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-color: black;
+  border: 2px solid black;
+}
+
+.fourthinforow {
+  font-family: "Roboto";
+  font-family: 40px;
+  padding: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-color: black;
+  border: 2px solid black;
+}
+
