@@ -23,7 +23,7 @@ def detect_a():
 def detect_b():
     #160 100
     #40 210
-    if distance(xvals,yvals,'THUMB_TIP') > 110:
+    if distance(xvals,yvals,'THUMB_TIP') > 120:
         return False
     elif distance(xvals,yvals,'RING_TIP') < 190:
         return False
@@ -37,11 +37,21 @@ def detect_b():
         return True
 def detect_c():
     # Thumb must be at least 170 pixels away
+    #d for pinky 250.83859352181037
+    #d for ring 267.6191323504357
+    #d for middle 273.48126078398866
+    #d for index 257.70137756713683
+    #d for thumb 211.24866863485792
+
     if distance(xvals,yvals,'THUMB_TIP') < 170:
         return False
-    elif abs(distance(xvals,yvals,'PINKY_TIP') - distance(xvals,yvals,'RING_TIP')) > 40:
+    elif abs(distance(xvals,yvals,'PINKY_TIP') - distance(xvals,yvals,'RING_TIP')) > 20:
         return False
-    elif abs(distance(xvals,yvals,'RING_TIP') - distance(xvals,yvals,'MIDDLE_TIP')) > 40:
+    elif abs(distance(xvals,yvals,'RING_TIP') - distance(xvals,yvals,'MIDDLE_TIP')) > 20:
+        return False
+    elif distance(xvals,yvals,'RING_TIP') < 260:
+        return False
+    elif distance(xvals,yvals,'INDEX_TIP') < 240:
         return False
     else:
         return True
@@ -51,6 +61,10 @@ def detect_d():
     elif distance(xvals,yvals,'THUMB_TIP') < 90:
         return False
     elif abs(distance(xvals,yvals,'RING_TIP') - distance(xvals,yvals,'MIDDLE_TIP')) > 20:
+        return False
+    elif distance(xvals,yvals,'RING_TIP') > 60:
+        return False
+    elif distance(xvals,yvals,'PINKY_TIP') > 60:
         return False
     else:
         return True
@@ -171,8 +185,8 @@ while 1:
 
     cv2.putText(img,str(int(fps)), (10,70), cv2.FONT_HERSHEY_PLAIN, 3, (255,0,255), 3)
     try:
-        print(f"d for pinky {distance(xvals,yvals,'PINKY_TIP')}")
-        print(f"d for ring {distance(xvals,yvals,'RING_TIP')}")
+        #print(f"d for pinky {distance(xvals,yvals,'PINKY_TIP')}")
+        #print(f"d for ring {distance(xvals,yvals,'RING_TIP')}")
         #print(f"d for middle {distance(xvals,yvals,'MIDDLE_TIP')}")
         #print(f"d for index {distance(xvals,yvals,'INDEX_TIP')}")
         #print(f"d for thumb {distance(xvals,yvals,'THUMB_TIP')}")
